@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Gatos</title>
+  </head>
+  <body>
+    <script>
+        
+        async function pegaGato(){
+  
+          let apiUrl = 'https://api.thecatapi.com/v1/'
+          let apiKey = 'live_O7uMsdGbRRCE4XXeoWpSTE0cXcQcE8K3OSUB3TGoykj1bgIydSfIag7OOMSMVBvf'
+  
+            let url = `${apiUrl}images/search/`
+  
+            let res = await fetch(url, {headers: {
+              'x-api-key': apiKey
+            }})
+            .then(response => {
+                return response.json()
+            })
+            .then(data => {
+              imagemDeGato = data[0];
+              return document.getElementById("imagem-de-gato").src= imagemDeGato.url;
+            })
+        }
+      </script>
+    <button onclick="pegaGato()">Pega gato</button>
+
+    <img id="imagem-de-gato"></img>
+    
+  </body>
+</html>
